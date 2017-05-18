@@ -32,6 +32,14 @@ def get_directions():
                 elif event.type==pygame.KEYUP:
                     command="no command"
             print(command)
+            stream = io.BytesIO()
+        	camera.capture(stream, format='jpeg', use_video_port=True)
+        	"""Save image"""
+    		stream.seek(0)
+   			image = Image.open(stream)
+    		image.save("C:/Users/Sanidhya garg/itsp/%s/image%s.jpg" % (command,"-" + command + "-"+ str(time.time())), format="JPEG")
+    		image_helper.save_image_with_direction(stream, command)
+        	stream.flush()
             clock.tick(10)
     except KeyboardInterrupt:
         pygame.quit()
