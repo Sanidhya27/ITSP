@@ -1,6 +1,6 @@
 import pygame
 import pygame.font
-import motor control
+import motor_control
 def pygame_setup():
 	pygame.init()
 	display=pygame.display.set_mode((500,500))
@@ -32,7 +32,7 @@ def get_directions():
 		pygame.quit()
 def main():
     """Main function"""
-    gpio_setup()
+    motor_contol.gpio_setup()
     pygame_setup()
     get_directions()
 
