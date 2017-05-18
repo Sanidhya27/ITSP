@@ -22,6 +22,8 @@ try:
 				command="FORWARD"
 			if event.key==pygame.K_DOWN:
 				command="BACK"
+		if event.type==pygame.KEYUP:
+			command="no command"	
 		print(command)		
 		instructions(command)	
 except KeyboardInterrupt:
