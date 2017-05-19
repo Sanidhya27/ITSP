@@ -38,7 +38,7 @@ def get_directions():
     		stream.seek(0)
    			image = Image.open(stream)
     		image.save("C:/Users/Sanidhya garg/itsp/%s/image%s.jpg" % (command,"-" + command + "-"+ str(time.time())), format="JPEG")
-    		image_helper.save_image_with_direction(stream, command)
+    		#image_helper.save_image_with_direction(stream, command)
         	stream.flush()
             clock.tick(10)
     except KeyboardInterrupt:
