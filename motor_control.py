@@ -1,10 +1,10 @@
-'''
+
 import RPi.GPIO as GPIO
 right_motor_1=
 right_motor_2=
 left_motor_1=
 left_motor_2=
-'''
+
 def gpio_setup():
 	"""Sets the GPIO pins for the two motors"""
     GPIO.setmode(GPIO.BCM)
