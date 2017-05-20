@@ -42,6 +42,10 @@ y2 = tf.sigmoid(tf.matmul(y1, w2) + b2)
 
 
 each_loss = - y_ * tf.log(y2) - (1 - y_) * tf.log(1 - y2)
+sum_of_all = tf.reduce_mean(tf.reduce_sum(each_loss, reduction_indices=[1]))
+regularizer = tf.nn.l2_loss(matmul(w1,w2))/len(each_loss)
+cost_function = sum_of_all + regularizer
+optimiser = 
 
 
 sess = tf.InteractiveSession()
@@ -52,5 +56,5 @@ for _ in range(1000):
     batch_xs,batch_ys= zip(*random.sample(all_img_label,100))
     #batch_xs = [row[0] for row in batch]
     #batch_ys = [row[1] for row in batch]
-    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
+    sess.run(optimiser, feed_dict={x: batch_xs, y_: batch_ys})
 
