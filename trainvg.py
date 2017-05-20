@@ -18,7 +18,18 @@ CLASSIFICATION_LABELS_AND_VALUES = {
     'right': [0, 0, 0, 1, 0],
     'idle': [0, 0, 0, 0, 1]
 }
-all_img_label = load_images_to_array(CLASSIFICATION_LABELS_AND_VALUES)
+all_img_label = load_images_to_array(CLASSIFICATION_LABELS_AND_VALUES[1:,:])
+
+x  = tf.placeholder(tf.float32, [None, 784])
+y_ = tf.placeholder(tf.float32, [None, 5])
+w1 = tf.Variable(tf.zeros([784, hidden_layer_size]))
+b1 = tf.Variable(tf.zeros([hidden_layer_size]))
+y1 = tf.sigmoid(tf.matmul(x, w1) + b1)
+w2 = tf.Variable(tf.zeros([hidden_layer_size,5]))
+b2 = tf.Variable(tf.zeros([5]))
+y2 = tf.sigmoid(tf.matmul(y1, w2) + b2)
+
+
 
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
