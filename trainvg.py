@@ -39,13 +39,16 @@ y1 = tf.sigmoid(tf.matmul(x, w1) + b1)
 w2 = tf.Variable(tf.truncated_normal([hidden_layer_size,5]))
 b2 = tf.Variable(tf.zeros([5]))
 y2 = tf.sigmoid(tf.matmul(y1, w2) + b2)
-
+q  = w1.flatten()
+q  = q.append(b1.flatten())
+q  = q.append(w2.flatten())
+q  = q.append(b2.flatten())
 
 each_loss = - y_ * tf.log(y2) - (1 - y_) * tf.log(1 - y2)
 sum_of_all = tf.reduce_mean(tf.reduce_sum(each_loss, reduction_indices=[1]))
 regularizer = tf.nn.l2_loss(matmul(w1,w2))/len(each_loss)
 cost_function = sum_of_all + regularizer
-optimiser = 
+optimiser = tf.train.AdamOptimizer.minimize(cost_function,var_list = q)   # this will optimise and update w1, b1, w2, b2
 
 
 sess = tf.InteractiveSession()
