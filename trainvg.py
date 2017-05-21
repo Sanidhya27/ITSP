@@ -29,7 +29,7 @@ CLASSIFICATION_LABELS_AND_VALUES = {
     'right'  : [0, 0, 0, 1, 0],
     'idle'   : [0, 0, 0, 0, 1]
 }
-all_img_label = load_images_to_array(CLASSIFICATION_LABELS_AND_VALUES[1:,:])
+all_img_label = load_images_to_array(CLASSIFICATION_LABELS_AND_VALUES)
 
 x  = tf.placeholder(tf.float32, [None, 784])
 y_ = tf.placeholder(tf.float32, [None, 5])
@@ -56,7 +56,7 @@ tf.global_variables_initializer().run()
 
 
 for _ in range(1000):
-    batch_xs,batch_ys= zip(*random.sample(all_img_label,100))
+    batch_xs,batch_ys= zip(*random.sample(all_img_label[1: , :],100))
     #batch_xs = [row[0] for row in batch]
     #batch_ys = [row[1] for row in batch]
     sess.run(optimiser, feed_dict={x: batch_xs, y_: batch_ys})
