@@ -1,5 +1,6 @@
 
 import RPi.GPIO as GPIO
+<<<<<<< HEAD
 right_motor_1=17
 right_motor_2=22
 left_motor_1=19
@@ -22,6 +23,12 @@ c=GPIO.PWM(22,500)
 c.start(0)
 
 
+=======
+right_motor_1=
+right_motor_2=
+left_motor_1=
+left_motor_2=
+>>>>>>> 25668b80b89e1df32a172012446d6e300992b655
 
 def gpio_setup():
     """Sets the GPIO pins for the two motors"""
